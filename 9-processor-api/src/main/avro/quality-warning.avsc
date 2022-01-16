@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "QualityWarning",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "message",
+      "type": "string"
+    },
+    {
+      "name": "tpm_prediction",
+      "type": "string"
+    }
+  ]
+}

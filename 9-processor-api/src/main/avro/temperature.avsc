@@ -1,0 +1,47 @@
+{
+  "type": "record",
+  "name": "Temperature",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "fryer",
+      "type": "string"
+    },
+    {
+      "name": "store",
+      "type": "string"
+    },
+    {
+      "name": "temperature",
+      "type": "int"
+    },
+    {
+      "name": "timestamp",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "oil_type",
+      "type": {
+        "type": "enum",
+        "name": "OilType",
+        "symbols": [
+          "VEGETABLE",
+          "DUCK_FAT",
+          "GHEE",
+          "CONVENTIONAL_MOTOR_OIL"
+        ]
+      }
+    },
+    {
+      "name": "os_version",
+      "type": "string"
+    },
+    {
+      "name": "precision",
+      "type": "string"
+    }
+  ]
+}
