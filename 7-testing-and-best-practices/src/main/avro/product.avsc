@@ -1,0 +1,30 @@
+{
+  "type": "record",
+  "name": "Product",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "product_id",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "price",
+      "type": "float",
+      "default": 0.0
+    },
+    {
+      "name": "vendor",
+      "type": "string",
+      "default": "?"
+    },
+    {
+      "name": "zone",
+      "type": "string",
+      "default": "europe-est"
+    }
+  ]
+}

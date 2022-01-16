@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "TotalScore",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "score",
+      "type": "double"
+    },
+    {
+      "name": "ratings",
+      "type": "int"
+    }
+  ]
+}

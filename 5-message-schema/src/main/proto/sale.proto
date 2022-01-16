@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package io.conducktor.course.streams.proto;
+
+option java_multiple_files = true;
+
+message Sale {
+  string user_id = 1;
+  string order_id = 2;
+  string address_id = 3;
+  Total total = 4;
+
+  message Total {
+    int32 value = 1;
+    string currency = 2;
+  }
+
+  repeated string comments = 5;
+
+}

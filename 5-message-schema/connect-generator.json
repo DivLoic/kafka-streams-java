@@ -1,0 +1,15 @@
+{
+  "name": "exo-5-kafka-streams-course",
+  "config": {
+    "connector.class": "fr.ldivad.courses.connect.datagen.DatagenConnector",
+    "kafka.topic": "${topic}",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "name": "exo-5-kafka-streams-course",
+    "schema.filename": "${module}/generated-order.avro",
+    "schema.keyfield": "user_id",
+    "tasks.max": "1",
+    "value.converter": "${converter}",
+    "value.converter.schema.registry.url": "http://localhost:8081",
+    "value.converter.schemas.enable": "true"
+  }
+}

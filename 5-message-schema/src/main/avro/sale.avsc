@@ -1,0 +1,54 @@
+{
+  "name": "Sale",
+  "type": "record",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "user_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "order_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "address_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "total",
+      "type": {
+        "name": "Total",
+        "type": "record",
+        "namespace": "io.conducktor.course.streams.avro",
+        "fields": [
+          {
+            "name": "value",
+            "type": "int"
+          },
+          {
+            "name": "currency",
+            "type": "string",
+            "default": "EU"
+          }
+        ]
+      }
+    },
+    {
+      "name": "comments",
+      "type": {
+        "type": "array",
+        "items": "string"
+      }
+    }
+  ]
+}

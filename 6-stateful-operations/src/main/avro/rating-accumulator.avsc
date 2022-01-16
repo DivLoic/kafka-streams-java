@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "RatingAccumulator",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "scores",
+      "type": {
+        "type": "array",
+        "items": "int"
+      },
+      "default": []
+    }
+  ]
+}

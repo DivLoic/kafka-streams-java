@@ -1,0 +1,91 @@
+{
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "address_id": {
+      "type": "string",
+      "required": true
+    },
+    "payment": {
+      "type": "string",
+      "optional": true,
+      "default": null
+    },
+    "details": {
+      "type": "object",
+      "optional": true,
+      "default": null,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "datetime": {
+          "type": "integer",
+          "format": "utc-millisec"
+        },
+        "dishes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "name": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer"
+              },
+              "price": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "integer"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "default": "EU"
+                  }
+                }
+              },
+              "ingredients": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "enum": [
+                        "g",
+                        "l",
+                        "cl",
+                        "ml"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

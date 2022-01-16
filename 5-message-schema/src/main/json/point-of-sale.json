@@ -1,0 +1,9 @@
+{
+  "type":"object",
+  "properties": {
+    "address_id": {
+      "type": "string",
+      "format" : "uuid"
+    }
+  }
+}

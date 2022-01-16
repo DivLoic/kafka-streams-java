@@ -1,0 +1,140 @@
+{
+  "name": "Order",
+  "type": "record",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "user_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "address_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "payment",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "details",
+      "type": {
+        "name": "OrderDetails",
+        "type": "record",
+        "namespace": "io.conducktor.course.streams.avro",
+        "fields": [
+          {
+            "name": "id",
+            "type": {
+              "type": "string",
+              "logicalType": "uuid"
+            }
+          },
+          {
+            "name": "datetime",
+            "type": {
+              "type": "long",
+              "logicalType": "timestamp-millis"
+            }
+          },
+          {
+            "name": "dishes",
+            "type": {
+              "type": "array",
+              "items": {
+                "name": "Dish",
+                "type": "record",
+                "namespace": "io.conducktor.course.streams.avro",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": {
+                      "type": "string",
+                      "logicalType": "uuid"
+                    }
+                  },
+                  {
+                    "name": "name",
+                    "type": "string"
+                  },
+                  {
+                    "name": "quantity",
+                    "type": "int"
+                  },
+                  {
+                    "name": "price",
+                    "type": {
+                      "name": "Price",
+                      "type": "record",
+                      "namespace": "io.conducktor.course.streams.avro",
+                      "fields": [
+                        {
+                          "name": "value",
+                          "type": "int"
+                        },
+                        {
+                          "name": "currency",
+                          "type": "string",
+                          "default": "EU"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "ingredients",
+                    "type": {
+                      "type": "array",
+                      "items": {
+                        "name": "Ingredient",
+                        "type": "record",
+                        "namespace": "io.conducktor.course.streams.avro",
+                        "fields": [
+                          {
+                            "name": "id",
+                            "type": {
+                              "type": "string",
+                              "logicalType": "uuid"
+                            }
+                          },
+                          {
+                            "name": "name",
+                            "type": "string"
+                          },
+                          {
+                            "name": "quantity",
+                            "type": "int"
+                          },
+                          {
+                            "name": "unit",
+                            "type": {
+                              "type": "enum",
+                              "name": "Unit",
+                              "symbols": [
+                                "g",
+                                "l",
+                                "cl",
+                                "ml"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

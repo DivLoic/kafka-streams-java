@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "PointOfSale",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "address_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    }
+  ]
+}

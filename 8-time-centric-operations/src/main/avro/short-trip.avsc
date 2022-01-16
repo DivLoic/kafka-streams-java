@@ -1,0 +1,33 @@
+{
+  "type": "record",
+  "name": "ShortTrip",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "vehicle_id",
+      "type": "string"
+    },
+    {
+      "name": "store_id",
+      "type": "string"
+    },
+    {
+      "name": "trip_date",
+      "type":  {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "trip_start_time",
+      "type": {
+        "type": "int",
+        "logicalType": "time-millis"
+      }
+    },
+    {
+      "name": "duration",
+      "type": "long"
+    }
+  ]
+}

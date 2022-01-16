@@ -1,0 +1,30 @@
+{
+  "type": "record",
+  "name": "Departure",
+  "namespace": "io.conducktor.course.streams.avro",
+  "fields": [
+    {
+      "name": "vehicle_id",
+      "type": "string"
+    },
+    {
+      "name": "store_id",
+      "type": "string"
+    },
+    {
+      "name": "timestamp",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "VehicleType",
+        "symbols" : ["MOTORIZED", "HORSE", "INSTANT_TRANSMISSION", "ROCKETSHIP"]
+      }
+    }
+  ]
+}
