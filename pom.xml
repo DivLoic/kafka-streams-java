@@ -29,7 +29,6 @@
         <module>8-time-centric-operations</module>
         <module>9-processor-api</module>
         <module>10-cloud</module>
-        <module>0-sample</module>
     </modules>
 
 </project>
