@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.conducktor.course.streams</groupId>
+    <groupId>io.conduktor.course.streams</groupId>
     <artifactId>4-topology-configuration</artifactId>
     <version>3.0-SNAPSHOT</version>
 
@@ -67,7 +67,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>io.conducktor.course.streams.StreetFoodTruckApp</mainClass>
+                            <mainClass>io.conduktor.course.streams.StreetFoodTruckApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

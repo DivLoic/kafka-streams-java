@@ -1,7 +1,7 @@
 {
   "name": "Sale",
   "type": "record",
-  "namespace": "io.conducktor.course.streams.avro",
+  "namespace": "io.conduktor.course.streams.avro",
   "fields": [
     {
       "name": "user_id",
@@ -29,7 +29,7 @@
       "type": {
         "name": "Total",
         "type": "record",
-        "namespace": "io.conducktor.course.streams.avro",
+        "namespace": "io.conduktor.course.streams.avro",
         "fields": [
           {
             "name": "value",

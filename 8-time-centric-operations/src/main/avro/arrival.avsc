@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "Arrival",
-  "namespace": "io.conducktor.course.streams.avro",
+  "namespace": "io.conduktor.course.streams.avro",
   "fields": [
     {
       "name": "vehicle_id",

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.conducktor.course.streams</groupId>
+    <groupId>io.conduktor.course.streams</groupId>
     <artifactId>5-message-schema</artifactId>
     <version>3.0-SNAPSHOT</version>
 
@@ -169,7 +169,7 @@
                 <version>${jsonschema2pojo-maven-plugin.version}</version>
                 <configuration>
                     <sourceDirectory>${basedir}/src/main/json</sourceDirectory>
-                    <targetPackage>io.conducktor.course.streams.json</targetPackage>
+                    <targetPackage>io.conduktor.course.streams.json</targetPackage>
                     <outputDirectory>${project.build.directory}/generated-main-json-java/</outputDirectory>
                     <generateBuilders>true</generateBuilders>
                 </configuration>
@@ -224,7 +224,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <mainClass>
-                                io.conducktor.course.streams.A_AvroRecipeApp
+                                io.conduktor.course.streams.A_AvroRecipeApp
                             </mainClass>
                         </manifest>
                     </archive>

@@ -1,7 +1,7 @@
 {
   "name": "Order",
   "type": "record",
-  "namespace": "io.conducktor.course.streams.avro",
+  "namespace": "io.conduktor.course.streams.avro",
   "fields": [
     {
       "name": "user_id",
@@ -29,7 +29,7 @@
       "type": {
         "name": "OrderDetails",
         "type": "record",
-        "namespace": "io.conducktor.course.streams.avro",
+        "namespace": "io.conduktor.course.streams.avro",
         "fields": [
           {
             "name": "id",
@@ -52,7 +52,7 @@
               "items": {
                 "name": "Dish",
                 "type": "record",
-                "namespace": "io.conducktor.course.streams.avro",
+                "namespace": "io.conduktor.course.streams.avro",
                 "fields": [
                   {
                     "name": "id",
@@ -74,7 +74,7 @@
                     "type": {
                       "name": "Price",
                       "type": "record",
-                      "namespace": "io.conducktor.course.streams.avro",
+                      "namespace": "io.conduktor.course.streams.avro",
                       "fields": [
                         {
                           "name": "value",
@@ -95,7 +95,7 @@
                       "items": {
                         "name": "Ingredient",
                         "type": "record",
-                        "namespace": "io.conducktor.course.streams.avro",
+                        "namespace": "io.conduktor.course.streams.avro",
                         "fields": [
                           {
                             "name": "id",
