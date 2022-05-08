@@ -5,11 +5,19 @@
   "fields": [
     {
       "name": "message",
-      "type": "string"
+      "type": "string",
+      "default": "The oil quality is below the requirement."
     },
     {
       "name": "tpm_prediction",
       "type": "string"
+    },
+    {
+      "name": "session",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
     }
   ]
 }

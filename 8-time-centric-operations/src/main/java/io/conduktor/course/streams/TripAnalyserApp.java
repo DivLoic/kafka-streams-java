@@ -61,9 +61,9 @@ public class TripAnalyserApp extends StreamingApp {
 
         .join(arrivals,
             new DepartureArrivalStreamJoiner(),
-            JoinWindows
-                .of(JOIN_SLIDING_WINDOW_LENGTH)
-                .grace(JOIN_SLIDING_WINDOW_GRACE),
+            JoinWindows.ofTimeDifferenceAndGrace(
+                JOIN_SLIDING_WINDOW_LENGTH,
+                JOIN_SLIDING_WINDOW_GRACE),
             params.getDepartureArrivalStreamJoined("departure-cross-arrival"))
 
         .selectKey((orderId, trip) -> trip.getStoreId())

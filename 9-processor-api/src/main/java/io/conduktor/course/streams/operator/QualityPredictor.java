@@ -4,9 +4,15 @@ import io.conduktor.course.streams.avro.QualityWarning;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.Period;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import org.apache.kafka.common.header.internals.RecordHeader;
+import org.apache.kafka.common.header.internals.RecordHeaders;
 import org.apache.kafka.streams.kstream.Windowed;
 import org.apache.kafka.streams.processor.PunctuationType;
 import org.apache.kafka.streams.processor.api.Processor;
@@ -21,12 +27,16 @@ public class QualityPredictor implements Processor<Windowed<String>, Long, Strin
   SessionStore<String, Long> stateStore;
 
   public double predict(Instant starTime) {
-    BigDecimal slope = BigDecimal.valueOf(0.5);
-    BigDecimal origin = BigDecimal.valueOf(0.5);
-    BigDecimal max =
-        BigDecimal.valueOf(Instant.now().getEpochSecond() - starTime.getEpochSecond());
+    final Instant now = Instant.now();
+    BigDecimal slope = BigDecimal.valueOf(0.2);
+    BigDecimal origin = BigDecimal.valueOf(10);
 
-    return slope.multiply(max).add(origin).doubleValue();
+    BigDecimal uptime =
+        BigDecimal.valueOf(Duration.between(starTime, now).toMinutes());
+
+    System.out.printf("now %s, starTime %s, uptime %s m%n", now, starTime, uptime);
+
+    return slope.multiply(uptime).add(origin).doubleValue();
   }
 
   @Override
@@ -39,7 +49,7 @@ public class QualityPredictor implements Processor<Windowed<String>, Long, Strin
 
       Set<String> keys = new HashSet<>();
       final KeyValueIterator<Windowed<String>, Long> sessions =
-          this.stateStore.fetch("KS90001");//.fetch("KS90000", "KS99999");
+          this.stateStore.fetch("F901", "F999");
 
       sessions.forEachRemaining((kv) -> {
         System.out.println(String.format("checking %s / %s - %s : %s",
@@ -48,6 +58,15 @@ public class QualityPredictor implements Processor<Windowed<String>, Long, Strin
             kv.key.window().endTime().atZone(ZoneOffset.UTC.normalized()),
             kv.value
         ));
+
+        context.forward(new Record<>(
+                kv.key.key(),
+                QualityWarning
+                    .newBuilder()
+                    .setSession(kv.key.window().startTime())
+                    .setTpmPrediction(String.valueOf(predict(kv.key.window().startTime()))).build(),
+                Instant.now().toEpochMilli()),
+            "produce-warning");
 
 
                 /*if (!keys.contains(kv.key.key())) {

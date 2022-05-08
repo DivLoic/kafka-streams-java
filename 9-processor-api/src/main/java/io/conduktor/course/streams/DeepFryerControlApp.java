@@ -22,7 +22,7 @@ public class DeepFryerControlApp extends StreamingApp {
 
   static final Logger logger = LoggerFactory.getLogger(DeepFryerControlApp.class);
 
-  public static final Duration WINDOW_SIZE = Duration.ofMinutes(1);
+  public static final Duration WINDOW_SIZE = Duration.ofMinutes(15);
   public static final Duration WINDOW_GRACE = Duration.ZERO;
   public static final Long WINDOW_MAX_RECORDS = 999_999L;
 

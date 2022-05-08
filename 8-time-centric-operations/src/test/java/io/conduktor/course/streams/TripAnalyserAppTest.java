@@ -107,11 +107,11 @@ public class TripAnalyserAppTest extends TestUtils {
             .backwardFetchAll(beginningOfTheDay(departureTime), beginningOfNextDay(departureTime));
 
     assertThat(testIterator.next())
-        .satisfies(new Condition<>((kv) -> kv.key.key().equals("UT_STORE"), "Store ok"))
-        .satisfies(new Condition<>((kv) -> kv.value.equals(1L), "Count ok"));
+        .satisfies(new Condition<>((kv) -> kv.key.key().equals("UT_STORE"), "Store name"))
+        .satisfies(new Condition<>((kv) -> kv.value.equals(1L), "Trip count"));
 
     assertThat(testIterator)
-        .satisfies(new Condition<>((it) -> !it.hasNext(), "No other stores"));
+        .satisfies(new Condition<>((it) -> !it.hasNext(), "Trip saved in state"));
 
     testIterator.close();
   }
