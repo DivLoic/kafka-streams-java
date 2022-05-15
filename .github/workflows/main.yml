@@ -21,16 +21,16 @@ jobs:
         with:
           java-version: 11
           distribution: 'temurin'
-          cache: 'maven'
+          cache: 'gradle'
 
-      - name: Maven Compile
-        run: mvn -B compile
+      - name: Gradle Compile
+        run: ./gradlew compileJava --no-daemon -Dorg.gradle.console=plain
 
-      - name: Maven Unit Tests
-        run: mvn -B test
+      - name: Gradle Unit Tests
+        run: ./gradlew test --no-daemon -Dorg.gradle.console=plain
 
-      - name: Maven It Tests
-        run: mvn -B integration-test -Dit.only
+      #- name: Gradle It Tests
+      #  run: ./gradlew it --no-daemon -Dorg.gradle.console=plain
 
-      - name: Maven Packaging
-        run: mvn -B package -DskipTests
+      - name: Gradle Packaging
+        run: ./gradlew jar --no-daemon -Dorg.gradle.console=plain
