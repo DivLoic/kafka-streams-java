@@ -1,15 +1,23 @@
 {
   "type": "record",
   "name": "QualityWarning",
-  "namespace": "io.conducktor.course.streams.avro",
+  "namespace": "io.conduktor.course.streams.avro",
   "fields": [
     {
       "name": "message",
-      "type": "string"
+      "type": "string",
+      "default": "The oil quality is below the requirement."
     },
     {
       "name": "tpm_prediction",
       "type": "string"
+    },
+    {
+      "name": "session",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
     }
   ]
 }

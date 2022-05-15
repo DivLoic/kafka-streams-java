@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 module="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-package="io.conducktor.course.streams.generator"
+package="io.conduktor.course.streams.generator"
 jar="4-topology-configuration-3.0-SNAPSHOT-jar-with-dependencies.jar"
 
 if [ ! -f "${module}/target/${jar}" ]; then
