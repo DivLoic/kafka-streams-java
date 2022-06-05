@@ -33,6 +33,7 @@ sourceSets {
         }
     }
 }
+
 repositories {
     mavenLocal()
     maven {
@@ -42,16 +43,20 @@ repositories {
     maven {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
+
+    maven {
+        url = uri('https://jitpack.io/')
+    }
 }
 
 dependencies {
-    implementation 'org.apache.kafka:kafka-streams:3.1.0'
+    implementation 'org.apache.kafka:kafka-streams:3.1.1'
     implementation 'org.slf4j:slf4j-api:1.7.26'
     implementation 'org.slf4j:slf4j-log4j12:1.7.26'
     implementation 'org.apache.avro:avro:1.11.0'
-    implementation 'io.confluent:kafka-streams-avro-serde:7.0.1'
-    implementation 'io.confluent:kafka-streams-protobuf-serde:7.0.1'
-    implementation 'io.confluent:kafka-streams-json-schema-serde:7.0.1'
+    implementation 'io.confluent:kafka-streams-avro-serde:7.1.1'
+    implementation 'io.confluent:kafka-streams-protobuf-serde:7.1.1'
+    implementation 'io.confluent:kafka-streams-json-schema-serde:7.1.1'
 }
 
 group = 'io.conduktor.course.streams'
@@ -73,10 +78,6 @@ tasks.withType(JavaCompile) {
 
 jar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-
-    manifest {
-        attributes "Main-Class": "io.conduktor.course.streams.Main"
-    }
 
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
