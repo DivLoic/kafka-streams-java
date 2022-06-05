@@ -4,6 +4,7 @@ import java.util.Properties;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
@@ -30,7 +31,7 @@ public class FavouriteMealApp {
 
     KStream<String, String> textLines = builder.stream("user-profile-updates");
 
-    KTable<String, String> favouriteMealsCount = textLines
+    final KTable<String, String> userMealTable = textLines
 
         .filter((key, value) -> value.contains(",goto-meal:"))
 
@@ -38,13 +39,21 @@ public class FavouriteMealApp {
 
         .mapValues(value -> value.split(":")[1].toLowerCase())
 
-        .groupBy((user, meal) -> meal)
+        .toTable();
+
+    final KTable<String, String> favouriteMealsCount = userMealTable
+
+        .groupBy((user, meal) -> KeyValue.pair(meal, user))
 
         .count()
 
         .mapValues((count) -> Long.toString(count));
 
-    favouriteMealsCount.toStream().to("favourite-meals-output");
+    favouriteMealsCount
+
+        .toStream()
+
+        .to("favourite-meals-output");
 
     KafkaStreams streams = new KafkaStreams(builder.build(), config);
     // only do this in dev - not in prod
