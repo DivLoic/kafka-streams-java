@@ -4,12 +4,14 @@
   "namespace": "io.conduktor.course.streams.avro",
   "fields": [
     {
-      "name": "scores",
-      "type": {
-        "type": "array",
-        "items": "int"
-      },
-      "default": []
+      "name": "rating_count",
+      "type": "int",
+      "default": 0
+    },
+    {
+      "name": "rating_sum",
+      "type": "long",
+      "default": 0
     }
   ]
 }

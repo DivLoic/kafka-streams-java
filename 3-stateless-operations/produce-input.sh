@@ -9,8 +9,8 @@ pipe2="kafka-console-producer --broker-list localhost:9092 --topic user-profile-
 echo "Running: ${pipe1} | ${pipe2}  "
 
 
-produce 'ldivad,goto-meal:entrecote 🇫🇷 '
+produce 'ldivad,goto-meal:entrecote'
 produce 'emmab,goto-meal:🇸🇪 meatballs'
-produce 'lucas,goto-meal:entrecote 🇫🇷 '
-produce 'guilbia,goto-meal:entrecote 🇫🇷 '
+produce 'lucas,goto-meal:entrecote'
+produce 'guilbia,goto-meal:entrecote'
 produce 'mattp94,photo:cGhvdG8K'
