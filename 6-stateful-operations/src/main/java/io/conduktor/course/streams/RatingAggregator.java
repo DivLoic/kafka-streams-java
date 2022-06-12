@@ -77,35 +77,25 @@ public class RatingAggregator {
 
         .aggregate(
             () -> RatingAccumulator.newBuilder().build(),
-            (productId, rating, aggregate) -> {
-
-              final List<Integer> scores = aggregate.getScores();
-              scores.add(rating.getScore());
-
-              return RatingAccumulator
+            (productId, rating, aggregate) -> RatingAccumulator
                   .newBuilder()
-                  .setScores(scores)
-                  .build();
-            },
+                  .setRatingCount(aggregate.getRatingCount() + 1)
+                  .setRatingSum(aggregate.getRatingSum() + rating.getScore())
+                  .build(),
             Named.as("accumulator-materialization"),
             Materialized.with(Serdes.String(), ratingAccumulatorSerde)
         )
 
         .mapValues(accumulator -> {
-          Integer numberOfRating = accumulator.getScores().size();
-          Integer sumOfAllRatings = accumulator.getScores().stream().reduce(0, Integer::sum);
 
-          final BigDecimal score = BigDecimal.valueOf(sumOfAllRatings)
-              .divide(
-                  BigDecimal.valueOf(numberOfRating),
-                  2,
-                  RoundingMode.UP
-              );
+          final BigDecimal total = BigDecimal
+              .valueOf(accumulator.getRatingSum())
+              .divide(BigDecimal.valueOf(accumulator.getRatingCount()), 2, RoundingMode.UP);
 
           return TotalScore
               .newBuilder()
-              .setRatings(numberOfRating)
-              .setScore(score.doubleValue())
+              .setRatings(accumulator.getRatingCount())
+              .setScore(total.doubleValue())
               .build();
         })
 
