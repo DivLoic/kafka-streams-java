@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package io.conduktor.course.streams.proto;
-
-option java_multiple_files = true;
-
-message PointOfSale {
-  string address_id = 1;
-}

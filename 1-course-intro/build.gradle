@@ -41,7 +41,7 @@ jar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
 
     manifest {
-        attributes "Main-Class": "io.conduktor.course.streams.Main"
+        attributes "Main-Class": "io.conduktor.course.streams.FruitCountApp"
     }
 
     from {

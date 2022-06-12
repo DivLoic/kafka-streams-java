@@ -1,1 +1,0 @@
-# Module 6: Stateful operations
