@@ -5,6 +5,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 repositories {
@@ -25,26 +26,13 @@ version = '3.0-SNAPSHOT'
 description = '1-course-intro'
 java.sourceCompatibility = JavaVersion.VERSION_11
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
-        }
-    }
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-jar {
+shadowJar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-
     manifest {
-        attributes "Main-Class": "io.conduktor.course.streams.Main"
-    }
-
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        attributes "Main-Class": "io.conduktor.course.streams.FruitCountApp"
     }
 }
