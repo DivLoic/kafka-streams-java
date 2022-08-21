@@ -63,6 +63,7 @@ public class FruitCountApp {
     TopologyDescription description = topology.describe();
     logger.info(description.toString());
 
+    streams.cleanUp(); // dev only
     streams.start();
 
     // shutdown hook to correctly close the streams application
