@@ -10,13 +10,9 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
+    mavenCentral()
     maven {
         url = uri('https://packages.confluent.io/maven/')
-    }
-
-    maven {
-        url = uri('https://repo.maven.apache.org/maven2/')
     }
 }
 
