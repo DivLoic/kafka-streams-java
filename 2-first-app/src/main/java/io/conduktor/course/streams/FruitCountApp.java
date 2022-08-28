@@ -20,19 +20,20 @@ public class FruitCountApp {
     Logger logger = LoggerFactory.getLogger(FruitCountApp.class);
 
     Properties config = new Properties();
-    config.put(StreamsConfig.APPLICATION_ID_CONFIG, "fruit-count-app");
-    config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-    config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-    config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
-    config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+    // TODO (2): Set APPLICATION_ID_CONFIG to "fruit-count-app"
+    // TODO (3): Set BOOTSTRAP_SERVERS_CONFIG to "localhost:9092"
+    // TODO (4): Set AUTO_OFFSET_RESET_CONFIG to "earliest"
+    // TODO (5): Set DEFAULT_KEY_SERDE_CLASS_CONFIG to String
+    // TODO (6): Set DEFAULT_VALUE_SERDE_CLASS_CONFIG to String
 
     // for demo purpose: set this to scale on the same machine
     // config.put(StreamsConfig.STATE_DIR_CONFIG, System.getenv("statedirectory"));
 
     // for demo purpose: brings immediate feedback (default: 3000)
-    config.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 0);
+    // TODO (7): Set COMMIT_INTERVAL_MS_CONFIG to 0
 
-    StreamsBuilder builder = new StreamsBuilder();
+    // TODO (8): instantiate a StreamsBuilder
+    StreamsBuilder builder = null;
     // 1 - stream from Kafka
 
     KStream<String, String> fruitEvents = builder.stream("fruit-input");
@@ -58,7 +59,8 @@ public class FruitCountApp {
     toStrFruitCounts.toStream().to("fruit-output-count");
 
     Topology topology = builder.build();
-    KafkaStreams streams = new KafkaStreams(topology, config);
+    // TODO (9): instantiate a StreamsBuilder
+    KafkaStreams streams = null;
 
     TopologyDescription description = topology.describe();
     logger.info(description.toString());

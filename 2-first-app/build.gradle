@@ -8,16 +8,6 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'org.apache.kafka:kafka-streams:3.1.1'
-    implementation 'org.slf4j:slf4j-api:1.7.32'
-    implementation 'org.slf4j:slf4j-log4j12:1.7.32'
-}
-
 group = 'io.conduktor.course.streams'
 version = '3.0-SNAPSHOT'
 description = '2-first-app'
@@ -25,6 +15,16 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'org.slf4j:slf4j-log4j12:1.7.32'
+    // TODO (1): Add kafka-streams version 3.1.1 from org.apache.kafka
 }
 
 shadowJar {
